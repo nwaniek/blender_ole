@@ -1,0 +1,8 @@
+Blender Object Location Export
+
+Simple blender addon for exporting the location of any object. If installed, it
+will be accessible in the properties space as a new panel in the render
+properties (Render > Object Location Export).
+
+Enter the (CSV) file name the exporter shall write the data to, select
+everything else as required and hit the save button.
