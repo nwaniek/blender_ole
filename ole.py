@@ -144,9 +144,13 @@ class OBJECT_OT_ObjectLocationExport(bpy.types.Operator):
         scene.frame_set(frame_start)
 
         while scene.frame_current <= frame_end:
-            loc = obj.matrix_world.to_translation()
-            rot = obj.matrix_world.to_euler()
-            writer.writerow([scene.frame_current, loc[0], loc[1], loc[2], rot[0], rot[1], rot[2]])
+            mat = obj.matrix_world
+            writer.writerow([scene.frame_current,
+                mat[0][0], mat[0][1], mat[0][2], mat[0][3],
+                mat[1][0], mat[1][1], mat[1][2], mat[1][3],
+                mat[2][0], mat[2][1], mat[2][2], mat[2][3],
+                mat[3][0], mat[3][1], mat[3][2], mat[3][3]])
+
             scene.frame_set(scene.frame_current + frame_step)
 
         f.close()
